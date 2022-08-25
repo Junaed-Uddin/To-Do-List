@@ -6,12 +6,12 @@ document.getElementById('submit-btn').addEventListener('click', function () {
 
     const tableRows = document.createElement('tr');
     tableRows.innerHTML = `   
-        <th scope="col">${count}</th>
-        <th scope="col">${inputField}</th>
-        <th scope="col">
+        <td scope="col">${count}</td>
+        <td scope="col">${inputField}</td>
+        <td scope="col">
         <button class="btn btn-success done-btn">Done</button>
         <button class="btn btn-danger mt-2 mt-md-0 delete-btn">Delete</button>
-        </th> 
+        </td> 
     `
     if (inputField === '') {
         alert('Please Enter Something.!');
@@ -35,10 +35,12 @@ document.getElementById('submit-btn').addEventListener('click', function () {
     const doneBtns = document.getElementsByClassName('done-btn');
     for (const doneBtn of doneBtns) {
         doneBtn.addEventListener('click', function (event) {
-            const th1 = event.target.parentNode.previousElementSibling.previousElementSibling;
-            const th2 = event.target.parentNode.previousElementSibling;
-            th1.style.textDecoration = 'line-through';
-            th2.style.textDecoration = 'line-through';
+            const td1 = event.target.parentNode.previousElementSibling.previousElementSibling;
+            const td2 = event.target.parentNode.previousElementSibling;
+            td1.style.textDecoration = 'line-through';
+            td1.style.color = '#b3b1b1';
+            td2.style.textDecoration = 'line-through';
+            td2.style.color = '#b3b1b1';
         })
         document.getElementById('input-field').value = '';
     }
