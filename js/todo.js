@@ -25,21 +25,26 @@ document.getElementById('submit-btn').addEventListener('click', function () {
     for (const button of deleteBtns) {
         button.addEventListener('click', function (event) {
             event.target.parentNode.parentNode.remove(event.target.parentNode.parentNode);
+            const tbodyChildCount = document.getElementById('tableBody').childElementCount;
+            if (tbodyChildCount == 0) {
+                removeAll();
+            }
         })
     }
+    // add done button implement 
     const doneBtns = document.getElementsByClassName('done-btn');
-    // add to edit addEventListener
-    for (let i = 0; i < doneBtns.length; i++) {
-        const doneBtn = doneBtns[i];
-        const th1 = event.target.parentNode.previousElementSibling.previousElementSibling;
-        const th2 = event.target.parentNode.previousElementSibling;
+    for (const doneBtn of doneBtns) {
         doneBtn.addEventListener('click', function (event) {
+            const th1 = event.target.parentNode.previousElementSibling.previousElementSibling;
+            const th2 = event.target.parentNode.previousElementSibling;
             th1.style.textDecoration = 'line-through';
             th2.style.textDecoration = 'line-through';
         })
+        document.getElementById('input-field').value = '';
     }
-    document.getElementById('input-field').value = '';
 });
+
+
 
 
 document.getElementById('clear-all').addEventListener('click', function () {
